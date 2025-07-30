@@ -26,8 +26,7 @@ class LoginViewController: UIViewController {
         let alltextfields = [txtEmail, txtPassword]
         setPaddingForTextFields(alltextfields, left: 10, right: 10)
         
-//        txtEmail.setPadding(left: 10, right: 10)
-//        txtPassword.setPadding(left: 10, right: 10)
+
         
     }
     
