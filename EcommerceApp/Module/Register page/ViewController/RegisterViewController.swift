@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import CoreData
 
 class RegisterViewController: UIViewController {
     
+    @IBOutlet weak var imgViewPicker: UIImageView!
     @IBOutlet weak var viewdate: UIView!
     @IBOutlet weak var btnDatePicker: UIButton!
     @IBOutlet weak var lblDate: UILabel!
@@ -22,6 +24,9 @@ class RegisterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let imageGesture = UITapGestureRecognizer(target: self, action: #selector(addImage))
+        imgViewPicker.addGestureRecognizer(imageGesture)
         
         if objProfile == .EditProfile{
             self.title = "Edit Profile"
@@ -37,11 +42,14 @@ class RegisterViewController: UIViewController {
         let allTextFields = [textFieldEmail, textFieldPassword, textFieldConfirmPassword, textFieldUserName]
         setPaddingForTextFields(allTextFields, left: 10, right: 10)
         
-//        textFieldEmail.setPadding(left: 10, right: 10)
-//        textFieldPassword.setPadding(left: 10, right: 10)
-//        textFieldUserName.setPadding(left: 10, right: 10)
-//        textFieldConfirmPassword.setPadding(left: 10, right: 10)
-
+        
+    }
+    
+    @objc func addImage() {
+        let pickerController = UIImagePickerController()
+        pickerController.delegate = self
+        pickerController.allowsEditing = true
+        present(pickerController, animated: true)
     }
     
     func isValidDOB(_ dobString: String) -> Bool {
@@ -92,6 +100,28 @@ class RegisterViewController: UIViewController {
         let email = textFieldEmail.text ?? ""
         let password = textFieldPassword.text ?? ""
         
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let user = NSEntityDescription.insertNewObject(forEntityName: "User", into: context)
+        
+        user.setValue(username, forKey: "username")
+        user.setValue(email, forKey: "email")
+        user.setValue(password, forKey: "password")
+        user.setValue(lblDate.text ?? "", forKey: "dob")
+        
+        // Convert UIImage to Data
+        if let image = imgViewPicker.image, let imageData = image.jpegData(compressionQuality: 0.8) {
+            user.setValue(imageData, forKey: "profileImage")
+        }
+        
+        do {
+            try context.save()
+            print("✅ User registered successfully with image.")
+        } catch {
+            print("❌ Failed to save user: \(error.localizedDescription)")
+        }
         
         if password.isEmpty && confirmpassword.isEmpty && username.isEmpty {
             UIAlertController.showAlert(title: "Missing Info", message: "Please enter your username password and confirm password.",viewController : self)
@@ -203,5 +233,6 @@ class RegisterViewController: UIViewController {
             }
         }
     }
+    
 }
 

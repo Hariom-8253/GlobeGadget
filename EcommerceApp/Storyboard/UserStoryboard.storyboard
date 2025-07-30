@@ -18,8 +18,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.crop.square.badge.camera" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="lhE-8P-1A0">
+                                <rect key="frame" x="182.66666666666666" y="141.66666666666666" width="78.666666666666657" height="74.666666666666686"/>
+                                <color key="tintColor" name="ColorPrimary"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="9D1-vD-xWu"/>
+                                    <constraint firstAttribute="height" constant="75" id="uze-6F-P1i"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WoZ-DA-UU0">
+                                <rect key="frame" x="16" y="580" width="408" height="50"/>
+                                <color key="backgroundColor" name="ColorPrimary"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="P2Q-M5-TO1"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Submit">
+                                    <backgroundConfiguration key="background">
+                                        <color key="backgroundColor" name="ColorPrimary"/>
+                                    </backgroundConfiguration>
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="18"/>
+                                    <color key="baseForegroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="buttonSumit:" destination="PIv-Fb-J8c" eventType="touchUpInside" id="JcY-9B-n2f"/>
+                                </connections>
+                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="jCr-ME-vbr">
-                                <rect key="frame" x="16" y="154" width="408" height="290"/>
+                                <rect key="frame" x="16" y="265" width="408" height="290"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="UserName   " minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="uIt-tH-MKp">
                                         <rect key="frame" x="0.0" y="0.0" width="408" height="50"/>
@@ -109,39 +135,24 @@
                                     </textField>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WoZ-DA-UU0">
-                                <rect key="frame" x="16" y="484" width="408" height="50"/>
-                                <color key="backgroundColor" name="ColorPrimary"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="P2Q-M5-TO1"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Submit">
-                                    <backgroundConfiguration key="background">
-                                        <color key="backgroundColor" name="ColorPrimary"/>
-                                    </backgroundConfiguration>
-                                    <fontDescription key="titleFontDescription" type="system" pointSize="18"/>
-                                    <color key="baseForegroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="buttonSumit:" destination="PIv-Fb-J8c" eventType="touchUpInside" id="JcY-9B-n2f"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="eVg-2k-ohS"/>
                         <color key="backgroundColor" name="AppColor2"/>
                         <constraints>
-                            <constraint firstItem="jCr-ME-vbr" firstAttribute="top" secondItem="eVg-2k-ohS" secondAttribute="top" constant="30" id="0HA-87-0ai"/>
                             <constraint firstItem="jCr-ME-vbr" firstAttribute="leading" secondItem="eVg-2k-ohS" secondAttribute="leading" constant="16" id="72E-xd-lbx"/>
-                            <constraint firstItem="WoZ-DA-UU0" firstAttribute="top" secondItem="jCr-ME-vbr" secondAttribute="bottom" constant="40" id="R2r-Ti-jja"/>
+                            <constraint firstItem="lhE-8P-1A0" firstAttribute="centerX" secondItem="HFT-fa-Adf" secondAttribute="centerX" id="Abg-Pp-B0z"/>
                             <constraint firstItem="eVg-2k-ohS" firstAttribute="trailing" secondItem="WoZ-DA-UU0" secondAttribute="trailing" constant="16" id="YEI-Er-4ov"/>
+                            <constraint firstItem="jCr-ME-vbr" firstAttribute="top" secondItem="lhE-8P-1A0" secondAttribute="bottom" constant="50" id="Zw3-4M-Ikh"/>
+                            <constraint firstItem="lhE-8P-1A0" firstAttribute="top" secondItem="eVg-2k-ohS" secondAttribute="top" constant="16" id="fQH-Xq-d00"/>
                             <constraint firstItem="WoZ-DA-UU0" firstAttribute="leading" secondItem="eVg-2k-ohS" secondAttribute="leading" constant="16" id="jYk-5c-Nid"/>
+                            <constraint firstItem="WoZ-DA-UU0" firstAttribute="top" secondItem="jCr-ME-vbr" secondAttribute="bottom" constant="25" id="lma-0l-ahu"/>
                             <constraint firstItem="eVg-2k-ohS" firstAttribute="trailing" secondItem="jCr-ME-vbr" secondAttribute="trailing" constant="16" id="x4n-Mn-In7"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="btnDatePicker" destination="kYL-MY-Aqi" id="zaF-cz-doP"/>
                         <outlet property="btnRegister" destination="WoZ-DA-UU0" id="Vsb-Q0-pgI"/>
+                        <outlet property="imgViewPicker" destination="lhE-8P-1A0" id="gQg-FY-lCo"/>
                         <outlet property="lblDate" destination="IoZ-SB-Bgs" id="jrh-HY-xGr"/>
                         <outlet property="textFieldConfirmPassword" destination="A5f-yD-ACV" id="Fvq-WJ-ODD"/>
                         <outlet property="textFieldEmail" destination="93s-Kx-Jw5" id="sL0-w2-5VG"/>
@@ -231,6 +242,13 @@
                                                                     <outlet property="delegate" destination="9Mi-uS-v33" id="Wsh-8R-etp"/>
                                                                 </connections>
                                                             </textField>
+                                                            <pickerView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="djx-At-FZ3">
+                                                                <rect key="frame" x="0.0" y="388" width="408" height="0.0"/>
+                                                                <connections>
+                                                                    <outlet property="dataSource" destination="9Mi-uS-v33" id="C2x-6M-h4g"/>
+                                                                    <outlet property="delegate" destination="9Mi-uS-v33" id="RZ0-4p-tfu"/>
+                                                                </connections>
+                                                            </pickerView>
                                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZVe-76-avL">
                                                                 <rect key="frame" x="0.0" y="396" width="408" height="50"/>
                                                                 <color key="backgroundColor" name="colortextfieldtext"/>
@@ -240,6 +258,13 @@
                                                                     <outlet property="delegate" destination="9Mi-uS-v33" id="LoL-GQ-m8m"/>
                                                                 </connections>
                                                             </textField>
+                                                            <pickerView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LuL-MN-wz2">
+                                                                <rect key="frame" x="0.0" y="454" width="408" height="0.0"/>
+                                                                <connections>
+                                                                    <outlet property="dataSource" destination="9Mi-uS-v33" id="eWP-nj-Cu2"/>
+                                                                    <outlet property="delegate" destination="9Mi-uS-v33" id="kvE-un-hGw"/>
+                                                                </connections>
+                                                            </pickerView>
                                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Add 1" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x13-YN-OfH">
                                                                 <rect key="frame" x="0.0" y="462" width="408" height="50"/>
                                                                 <color key="backgroundColor" name="colortextfieldtext"/>
@@ -322,6 +347,8 @@
                     </view>
                     <connections>
                         <outlet property="btnSubmitAddForm" destination="cuZ-bP-Mhz" id="HZ1-Ge-dkq"/>
+                        <outlet property="cityPicker" destination="LuL-MN-wz2" id="vcU-HT-kUe"/>
+                        <outlet property="statePicker" destination="djx-At-FZ3" id="dgi-F5-eqw"/>
                         <outlet property="txtAdd1" destination="x13-YN-OfH" id="8mA-v9-Oid"/>
                         <outlet property="txtAdd2" destination="7yj-Zo-kLX" id="G0Y-mJ-Mlk"/>
                         <outlet property="txtCity" destination="ZVe-76-avL" id="YUe-Nd-xMP"/>
@@ -540,6 +567,7 @@
     <resources>
         <image name="calendar" catalog="system" width="128" height="107"/>
         <image name="ic_newlogo" width="1024" height="1024"/>
+        <image name="person.crop.square.badge.camera" catalog="system" width="128" height="109"/>
         <namedColor name="AppColor2">
             <color red="0.98039215686274506" green="0.97647058823529409" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -559,7 +587,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="tertiarySystemGroupedBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

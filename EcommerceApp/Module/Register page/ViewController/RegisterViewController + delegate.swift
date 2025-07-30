@@ -41,3 +41,10 @@ extension RegisterViewController: UITextFieldDelegate {
         return true
     }
 }
+
+extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        imgViewPicker.image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
+        dismiss(animated: true)
+    }
+}

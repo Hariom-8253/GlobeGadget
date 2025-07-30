@@ -9,8 +9,18 @@ import UIKit
 
 class AddressFormViewController: UIViewController {
     
+    var selectedState: String?
+    var selectedCity: String?
+    var isSelectingState = true
+
+    let stateList = Address.stateList
+    var cityList: [String] = []
+    let pickerView = UIPickerView()
+    
     var objAddress : Address?
     
+    @IBOutlet weak var cityPicker: UIPickerView!
+    @IBOutlet weak var statePicker: UIPickerView!
     @IBOutlet weak var btnSubmitAddForm: UIButton!
     @IBOutlet weak var txtPincode: UITextField!
     @IBOutlet weak var txtAdd2: UITextField!
@@ -25,21 +35,30 @@ class AddressFormViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+
+        pickerView.delegate = self
+        pickerView.dataSource = self
+
+//        txtState.delegate = self
+//        txtCity.delegate = self
+        
+        txtState.inputView = pickerView
+        txtCity.inputView = pickerView
+
+
         let allTextFields = [txtDob!,txtAdd1!,txtAdd2!, txtCity!, txtState!, txtEmail!, txtPincode!, txtLastName!, txtMobileNo!, txtFirstName!]
         let allbuttons = [btnSubmitAddForm!]
-        
         let allViews = allbuttons + allTextFields
         
         styleViews(allViews, cornerRadius: 8, borderWidth: 1, borderColor: UIColor.colorPrimary.cgColor)
         setPaddingForTextFields(allTextFields, left: 10, right: 10)
         
         self.title = "Add Address"
-        
+
         if let obj = objAddress {
             self.title = "Edit Address"
             btnSubmitAddForm.setTitle("Update", for: .normal)
-            
+
             txtFirstName.text = obj.strFirstName
             txtLastName.text = obj.strLastName
             txtEmail.text = obj.strEmail
@@ -50,10 +69,48 @@ class AddressFormViewController: UIViewController {
             txtAdd1.text = obj.strAddress1
             txtAdd2.text = obj.strAddress2
             txtMobileNo.text = "\(obj.intMobileNo ?? 0)"
-            
+
+            if let state = obj.strState {
+                cityList = Address.cities(forState: state)
+            }
         }
-        
     }
+
+    
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        
+//        txtState.inputView = pickerView
+//        txtCity.inputView = pickerView
+//                
+//        let allTextFields = [txtDob!,txtAdd1!,txtAdd2!, txtCity!, txtState!, txtEmail!, txtPincode!, txtLastName!, txtMobileNo!, txtFirstName!]
+//        let allbuttons = [btnSubmitAddForm!]
+//        
+//        let allViews = allbuttons + allTextFields
+//        
+//        styleViews(allViews, cornerRadius: 8, borderWidth: 1, borderColor: UIColor.colorPrimary.cgColor)
+//        setPaddingForTextFields(allTextFields, left: 10, right: 10)
+//        
+//        self.title = "Add Address"
+//        
+//        if let obj = objAddress {
+//            self.title = "Edit Address"
+//            btnSubmitAddForm.setTitle("Update", for: .normal)
+//            
+//            txtFirstName.text = obj.strFirstName
+//            txtLastName.text = obj.strLastName
+//            txtEmail.text = obj.strEmail
+//            txtState.text = obj.strState
+//            txtCity.text = obj.strCity
+//            txtPincode.text = "\(obj.intPincode ?? 0)"
+//            txtDob.text = "\(obj.intAge ?? 0)"
+//            txtAdd1.text = obj.strAddress1
+//            txtAdd2.text = obj.strAddress2
+//            txtMobileNo.text = "\(obj.intMobileNo ?? 0)"
+//            
+//        }
+//        
+//    }
     
     @IBAction func btnSubmitAction(_ sender: Any) {
         
@@ -137,50 +194,5 @@ class AddressFormViewController: UIViewController {
         }
         
         self.navigationController?.popViewController(animated: true)
-    }
-}
-
-extension AddressFormViewController: UITextFieldDelegate {
-    func textFieldShouldReturn (_ textField: UITextField) -> Bool{
-        if textField == txtFirstName && textField.returnKeyType == .next{
-            txtFirstName.resignFirstResponder()
-            txtLastName.becomeFirstResponder()
-        }
-        else if textField == txtLastName && textField.returnKeyType == .next{
-            txtLastName.resignFirstResponder()
-            txtEmail.becomeFirstResponder()
-        }
-        else if textField == txtEmail && textField.returnKeyType == .next{
-            txtEmail.resignFirstResponder()
-            txtMobileNo.becomeFirstResponder()
-        }
-        else if textField == txtMobileNo && textField.returnKeyType == .next{
-            txtMobileNo.resignFirstResponder()
-            txtDob.becomeFirstResponder()
-        }
-        else if textField == txtDob && textField.returnKeyType == .next{
-            txtDob.resignFirstResponder()
-            txtState.becomeFirstResponder()
-        }
-        else if textField == txtState && textField.returnKeyType == .next{
-            txtState.resignFirstResponder()
-            txtCity.becomeFirstResponder()
-        }
-        else if textField == txtCity && textField.returnKeyType == .next{
-            txtCity.resignFirstResponder()
-            txtAdd1.becomeFirstResponder()
-        }
-        else if textField == txtAdd1 && textField.returnKeyType == .next{
-            txtAdd1.resignFirstResponder()
-            txtAdd2.becomeFirstResponder()
-        }
-        else if textField == txtAdd2 && textField.returnKeyType == .next{
-            txtAdd2.resignFirstResponder()
-            txtPincode.becomeFirstResponder()
-        }
-        else{
-            txtPincode.resignFirstResponder()
-        }
-        return true
     }
 }
