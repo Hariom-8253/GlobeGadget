@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Setting Page View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="SettingPageViewController" id="Y6W-OH-hqX" customClass="SettingPageViewController" customModule="EcommerceApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="VHC-Pq-kwP">
+                                <rect key="frame" x="0.0" y="124" width="440" height="764"/>
+                                <color key="backgroundColor" name="AppColor2"/>
+                                <color key="sectionIndexBackgroundColor" name="AppColor2"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Y6W-OH-hqX" id="01a-Uq-wgT"/>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="HBd-2R-o1n"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" name="AppColor2"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="VHC-Pq-kwP" secondAttribute="trailing" id="Fnh-8P-GJZ"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="VHC-Pq-kwP" secondAttribute="bottom" id="Hdt-Ho-HIs"/>
+                            <constraint firstItem="VHC-Pq-kwP" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Vs4-ud-yzU"/>
+                            <constraint firstItem="VHC-Pq-kwP" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="afm-sr-NtR"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tblSetting" destination="VHC-Pq-kwP" id="fF4-d0-kJE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2744" y="46"/>
+        </scene>
+        <!--About Us View Controller-->
+        <scene sceneID="h8E-Zn-ap6">
+            <objects>
+                <viewController storyboardIdentifier="AboutUsViewController" id="kRw-xv-9Up" customClass="AboutUsViewController" customModule="EcommerceApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7aR-6J-tt1">
+                        <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fPb-fK-vtz">
+                                <rect key="frame" x="76" y="306" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q9m-0V-TxB">
+                                <rect key="frame" x="16" y="140" width="408" height="764"/>
+                                <color key="backgroundColor" name="AppColor2"/>
+                                <string key="text">Welcome to GlobeGadget – Your Global Apple Destination!
+
+At GlobeGadget, we believe in bringing the finest Apple technology right to your fingertips. Whether you’re searching for the latest iPhone, exploring top-tier Apple accessories, or upgrading your digital lifestyle — we’ve got you covered.
+
+Founded with a passion for innovation and quality, GlobeGadget is your trusted source for genuine Apple products. We’re not just an online store — we’re a community of Apple enthusiasts dedicated to providing:
+
+Authentic, high-quality products
+
+Fast and secure delivery
+
+Responsive customer support
+
+Easy return and exchange policy
+
+Our vision is to make premium Apple devices accessible to everyone, everywhere — with a seamless shopping experience that matches the elegance of the products we sell.
+
+Join the GlobeGadget family and experience the future — one Apple product at a time.</string>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="kRw-xv-9Up" id="jtn-7c-4nC"/>
+                                </connections>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="hr7-X6-UCD"/>
+                        <color key="backgroundColor" name="AppColor2"/>
+                        <constraints>
+                            <constraint firstItem="Q9m-0V-TxB" firstAttribute="leading" secondItem="hr7-X6-UCD" secondAttribute="leading" constant="16" id="247-hM-g6d"/>
+                            <constraint firstItem="Q9m-0V-TxB" firstAttribute="top" secondItem="hr7-X6-UCD" secondAttribute="top" constant="16" id="7dZ-96-uYW"/>
+                            <constraint firstItem="Q9m-0V-TxB" firstAttribute="bottom" secondItem="hr7-X6-UCD" secondAttribute="bottom" constant="16" id="fzA-Nh-inW"/>
+                            <constraint firstAttribute="trailing" secondItem="Q9m-0V-TxB" secondAttribute="trailing" constant="16" id="sz8-yk-aMy"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qxH-6z-vay" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1552" y="46"/>
+        </scene>
+        <!--Privacy Policy View Controller-->
+        <scene sceneID="jp5-Rq-3kk">
+            <objects>
+                <viewController storyboardIdentifier="PrivacyPolicyViewController" id="VZ0-cB-XSy" customClass="PrivacyPolicyViewController" customModule="EcommerceApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tGQ-Y2-FzZ">
+                        <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9T3-9Y-jk4">
+                                <rect key="frame" x="0.0" y="124" width="440" height="764"/>
+                                <color key="backgroundColor" name="AppColor2"/>
+                                <string key="text">At GlobeGadget, we respect your privacy and are committed to protecting your personal information. When you use our app, we may collect basic details such as your name, email, phone number, and delivery address to help process your orders and provide customer support.
+
+We do not sell or share your personal information with third-party advertisers. All payment information is handled securely through trusted payment gateways. Your data is stored safely and only used to improve your shopping experience.
+
+By using GlobeGadget, you agree to the collection and use of your information as described in this policy. If you have any questions or concerns, feel free to contact us at support@globegadget.com.</string>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="VZ0-cB-XSy" id="RXz-Pd-9fd"/>
+                                </connections>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="CxO-Z0-zNF"/>
+                        <color key="backgroundColor" name="AppColor2"/>
+                        <constraints>
+                            <constraint firstItem="9T3-9Y-jk4" firstAttribute="leading" secondItem="CxO-Z0-zNF" secondAttribute="leading" id="KUH-1W-Gkk"/>
+                            <constraint firstItem="9T3-9Y-jk4" firstAttribute="top" secondItem="CxO-Z0-zNF" secondAttribute="top" id="j5L-ep-jJz"/>
+                            <constraint firstItem="CxO-Z0-zNF" firstAttribute="bottom" secondItem="9T3-9Y-jk4" secondAttribute="bottom" id="jfY-A2-TwA"/>
+                            <constraint firstItem="CxO-Z0-zNF" firstAttribute="trailing" secondItem="9T3-9Y-jk4" secondAttribute="trailing" id="qxt-5C-dnB"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3V0-tS-Nc8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-143" y="46"/>
+        </scene>
+        <!--Termsand Condition View Controller-->
+        <scene sceneID="fCJ-1g-zwP">
+            <objects>
+                <viewController storyboardIdentifier="TermsandConditionViewController" id="7QP-Gl-hzY" customClass="TermsandConditionViewController" customModule="EcommerceApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nX7-Z5-fBk">
+                        <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gVW-oy-Qqb">
+                                <rect key="frame" x="0.0" y="124" width="440" height="764"/>
+                                <color key="backgroundColor" name="AppColor2"/>
+                                <string key="text">By using the GlobeGadget app, you agree to follow the terms mentioned below.
+
+All the products listed in the app are subject to availability. Prices may change without prior notice. We make sure all product details are accurate, but we are not responsible for any errors in descriptions or pricing.
+
+When placing an order, please ensure that your information is correct. Once an order is confirmed, it cannot be cancelled or changed. In case of any issues, you can contact our support team.
+
+All payments made through the app are secure. We are not responsible for any issues caused by third-party payment services.
+
+Using our app means you accept these terms. If you do not agree with any part of them, please do not use the app.</string>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Pxp-w7-w9p"/>
+                        <color key="backgroundColor" name="AppColor2"/>
+                        <constraints>
+                            <constraint firstItem="Pxp-w7-w9p" firstAttribute="bottom" secondItem="gVW-oy-Qqb" secondAttribute="bottom" id="3er-Z4-kbd"/>
+                            <constraint firstItem="Pxp-w7-w9p" firstAttribute="trailing" secondItem="gVW-oy-Qqb" secondAttribute="trailing" id="LoA-bc-RYh"/>
+                            <constraint firstItem="gVW-oy-Qqb" firstAttribute="leading" secondItem="Pxp-w7-w9p" secondAttribute="leading" id="c2Q-fJ-7Xz"/>
+                            <constraint firstItem="gVW-oy-Qqb" firstAttribute="top" secondItem="Pxp-w7-w9p" secondAttribute="top" id="zg7-B5-l1F"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0CT-GQ-0Th" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="989" y="46"/>
+        </scene>
+        <!--Contact Us View Controller-->
+        <scene sceneID="SUs-Ma-beE">
+            <objects>
+                <viewController storyboardIdentifier="ContactUsViewController" id="FSW-86-97A" customClass="ContactUsViewController" customModule="EcommerceApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZZI-2D-IvJ">
+                        <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="MQ5-ce-8YR">
+                                <rect key="frame" x="20" y="154" width="400" height="483"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uqi-iU-enT">
+                                        <rect key="frame" x="0.0" y="0.0" width="400" height="50"/>
+                                        <color key="backgroundColor" name="colortextfieldtext"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="CxT-BS-SLF"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="FSW-86-97A" id="Q6g-Bx-PKW"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gTD-Sp-pqf">
+                                        <rect key="frame" x="0.0" y="61" width="400" height="50"/>
+                                        <color key="backgroundColor" name="colortextfieldtext"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="Onm-gA-dOT"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="FSW-86-97A" id="wH0-4P-3aM"/>
+                                        </connections>
+                                    </textField>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Wd9-wj-kCb">
+                                        <rect key="frame" x="0.0" y="122" width="400" height="300"/>
+                                        <color key="backgroundColor" name="colortextfieldtext"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="300" id="pd2-2o-7U8"/>
+                                        </constraints>
+                                        <color key="textColor" systemColor="labelColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="next"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="FSW-86-97A" id="geH-yG-Ewb"/>
+                                        </connections>
+                                    </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WO2-gR-KlD">
+                                        <rect key="frame" x="0.0" y="433" width="400" height="50"/>
+                                        <color key="backgroundColor" name="ColorPrimary"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="RdS-nT-CLT"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Submit">
+                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="18"/>
+                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="btnContactSubmit:" destination="FSW-86-97A" eventType="touchUpInside" id="gba-Wq-2ZU"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="cyW-we-6VH"/>
+                        <color key="backgroundColor" name="AppColor2"/>
+                        <constraints>
+                            <constraint firstItem="MQ5-ce-8YR" firstAttribute="leading" secondItem="cyW-we-6VH" secondAttribute="leading" constant="20" id="1QW-Ab-3e8"/>
+                            <constraint firstItem="cyW-we-6VH" firstAttribute="trailing" secondItem="MQ5-ce-8YR" secondAttribute="trailing" constant="20" id="glG-Vq-yre"/>
+                            <constraint firstItem="MQ5-ce-8YR" firstAttribute="top" secondItem="cyW-we-6VH" secondAttribute="top" constant="30" id="x3V-c0-J6J"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="btnSubmit" destination="WO2-gR-KlD" id="yKH-4u-dZm"/>
+                        <outlet property="txtEmail" destination="gTD-Sp-pqf" id="0IY-cV-V1D"/>
+                        <outlet property="txtMessage" destination="Wd9-wj-kCb" id="NzR-m1-TdR"/>
+                        <outlet property="txtName" destination="uqi-iU-enT" id="T10-YH-eRO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uOh-jK-D5g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2351.9083969465646" y="45.774647887323944"/>
+        </scene>
+        <!--Wish List View Controller-->
+        <scene sceneID="4Tl-67-B1w">
+            <objects>
+                <viewController storyboardIdentifier="WishListViewController" id="znC-ZE-cou" customClass="WishListViewController" customModule="EcommerceApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cWH-bL-bqN">
+                        <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="P5g-Ta-hg7"/>
+                        <color key="backgroundColor" name="AppColor2"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hqu-se-7Ew" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3662" y="46"/>
+        </scene>
+        <!--Edit Profile View Controller-->
+        <scene sceneID="Bog-l2-LuG">
+            <objects>
+                <viewController storyboardIdentifier="EditProfileViewController" id="1cH-uJ-vVl" customClass="EditProfileViewController" customModule="EcommerceApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9D1-rv-fBs">
+                        <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Edit Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iaB-y7-E7Z">
+                                <rect key="frame" x="197" y="401" width="82" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="X0Q-q6-Dan"/>
+                        <color key="backgroundColor" name="AppColor2"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OvY-nJ-bZg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4669" y="46"/>
+        </scene>
+        <!--Web View View Controller-->
+        <scene sceneID="8SL-f5-c1N">
+            <objects>
+                <viewController storyboardIdentifier="WebViewViewController" id="0gY-zv-RzO" customClass="WebViewViewController" customModule="EcommerceApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="K6R-Y4-zNj">
+                        <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DMo-51-a27">
+                                <rect key="frame" x="0.0" y="124" width="440" height="764"/>
+                                <color key="backgroundColor" name="AppColor2"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Sxa-cj-d4Q">
+                                <rect key="frame" x="210" y="468" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Wqw-gL-MG9"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Wqw-gL-MG9" firstAttribute="trailing" secondItem="DMo-51-a27" secondAttribute="trailing" id="7L1-OO-tYw"/>
+                            <constraint firstItem="DMo-51-a27" firstAttribute="top" secondItem="Wqw-gL-MG9" secondAttribute="top" id="OOi-rR-17g"/>
+                            <constraint firstItem="Sxa-cj-d4Q" firstAttribute="centerX" secondItem="K6R-Y4-zNj" secondAttribute="centerX" id="POl-xa-aCk"/>
+                            <constraint firstItem="Wqw-gL-MG9" firstAttribute="bottom" secondItem="DMo-51-a27" secondAttribute="bottom" id="m5g-is-Vx4"/>
+                            <constraint firstItem="DMo-51-a27" firstAttribute="leading" secondItem="Wqw-gL-MG9" secondAttribute="leading" id="tj9-Rh-7XE"/>
+                            <constraint firstItem="Sxa-cj-d4Q" firstAttribute="centerY" secondItem="K6R-Y4-zNj" secondAttribute="centerY" id="vLv-zG-fLr"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="indicator" destination="Sxa-cj-d4Q" id="FGt-Hc-x8k"/>
+                        <outlet property="webView" destination="DMo-51-a27" id="2zU-GN-j94"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x7s-gN-EBm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3082" y="-623"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="AppColor2">
+            <color red="0.98039215686274506" green="0.97647058823529409" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="ColorPrimary">
+            <color red="0.0" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="colortextfieldtext">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

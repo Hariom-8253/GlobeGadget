@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="54" id="KGk-i7-Jjw" customClass="SettingPageTableViewCell" customModule="EcommerceApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="392" height="54"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="392" height="54"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hyN-dI-8nA">
+                        <rect key="frame" x="16" y="12" width="30" height="30"/>
+                        <color key="tintColor" name="ColorPrimary"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="990-dW-64U"/>
+                            <constraint firstAttribute="width" constant="30" id="sbx-vk-glh"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xl3-qO-1nW">
+                        <rect key="frame" x="54" y="16" width="330" height="22"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <switch hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E3s-lU-sph">
+                        <rect key="frame" x="327" y="11.666666666666664" width="51" height="31"/>
+                        <color key="onTintColor" name="ColorPrimary"/>
+                        <connections>
+                            <action selector="switchOnOff:" destination="KGk-i7-Jjw" eventType="valueChanged" id="5nL-QY-gfE"/>
+                        </connections>
+                    </switch>
+                </subviews>
+                <color key="backgroundColor" name="AppColor2"/>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="xl3-qO-1nW" secondAttribute="bottom" constant="16" id="1jv-jH-vCg"/>
+                    <constraint firstItem="hyN-dI-8nA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="G7v-Fu-CEi"/>
+                    <constraint firstAttribute="trailing" secondItem="E3s-lU-sph" secondAttribute="trailing" constant="16" id="O0v-mg-APf"/>
+                    <constraint firstItem="xl3-qO-1nW" firstAttribute="leading" secondItem="hyN-dI-8nA" secondAttribute="trailing" constant="8" id="b4j-1Z-fDD"/>
+                    <constraint firstItem="xl3-qO-1nW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="h1a-c4-mBV"/>
+                    <constraint firstItem="E3s-lU-sph" firstAttribute="centerY" secondItem="xl3-qO-1nW" secondAttribute="centerY" id="q3g-Xy-rpW"/>
+                    <constraint firstAttribute="trailing" secondItem="xl3-qO-1nW" secondAttribute="trailing" constant="8" id="sNI-ci-QmV"/>
+                    <constraint firstItem="hyN-dI-8nA" firstAttribute="centerY" secondItem="xl3-qO-1nW" secondAttribute="centerY" id="w6g-xF-z1Q"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" name="AppColor2"/>
+            <connections>
+                <outlet property="imgIcon" destination="hyN-dI-8nA" id="r9y-Xe-LvP"/>
+                <outlet property="lblSetting" destination="xl3-qO-1nW" id="jAz-hO-5kh"/>
+                <outlet property="switchNotification" destination="E3s-lU-sph" id="Wbf-Jp-R1r"/>
+            </connections>
+            <point key="canvasLocation" x="173" y="-81"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="AppColor2">
+            <color red="0.98039215686274506" green="0.97647058823529409" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="ColorPrimary">
+            <color red="0.0" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
