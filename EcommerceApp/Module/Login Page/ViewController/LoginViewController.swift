@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class LoginViewController: UIViewController {
     
@@ -71,15 +72,55 @@ class LoginViewController: UIViewController {
         }
         
         else{
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{return}
+            let context = appDelegate.persistentContainer.viewContext
             
-            self.navigationController?.navigationBar.isHidden = true
+            let fetch: NSFetchRequest<NSManagedObject> = NSFetchRequest(entityName: "User")
+            fetch.predicate = NSPredicate(format: "email ==[c] %@", email)
             
-            KeychainHelper.save(key: "LoginStatus", value: "true")
-            
-            let storyboard = UIStoryboard(name: "ProductStoryboard", bundle: nil)
-            if let plvc = storyboard.instantiateViewController(withIdentifier: "ProductListViewController") as? ProductListViewController {
-                self.navigationController?.pushViewController(plvc, animated: true)
+            do{
+                let results = try context.fetch(fetch)
+                guard let user = results.first else{
+                    UIAlertController.showAlert(title: "Login Failed", message: "No account found with this email", viewController: self)
+                    return
+                }
                 
+                if let storedPassword = user.value(forKey: "password") as? String, storedPassword == password{
+                    
+                    let username = user.value(forKey: "username") as? String ?? "(no name)"
+                        let email = user.value(forKey: "email") as? String ?? "(no email)"
+                        let dob = user.value(forKey: "dob") as? String ?? "(no dob)"
+                        var profileImage: UIImage? = nil
+                        if let imageData = user.value(forKey: "profileImage") as? Data {
+                            profileImage = UIImage(data: imageData)
+                        }
+
+                        // 2. Print to console (for debugging)
+                        print("✅ Logged in user details:")
+                        print("Username: \(username)")
+                        print("Email: \(email)")
+                        print("DOB: \(dob)")
+                        if profileImage != nil {
+                            print("Profile image is available.")
+                        } else {
+                            print("No profile image.")
+                        }
+                    
+                    KeychainHelper.save(key: "LoginStatus", value: "true")
+                    KeychainHelper.save(key: "LoggedInEmail", value: email.lowercased())
+                    self.navigationController?.navigationBar.isHidden = true
+
+                    let storyboard = UIStoryboard(name: "ProductStoryboard", bundle: nil)
+                    if let plvc = storyboard.instantiateViewController(withIdentifier: "ProductListViewController") as? ProductListViewController {
+                        self.navigationController?.pushViewController(plvc, animated: true)
+                        
+                    }
+                    
+                }else{
+                    UIAlertController.showAlert(title: "Login Failed", message: "Incorrect  Password", viewController: self)
+                }
+            }catch{
+                UIAlertController.showAlert(title: "Error", message: "Failed to fetch user. Try again.", viewController: self)
             }
         }
     }

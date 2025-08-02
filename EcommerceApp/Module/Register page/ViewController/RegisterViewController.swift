@@ -32,6 +32,15 @@ class RegisterViewController: UIViewController {
             self.title = "Edit Profile"
             btnRegister.setTitle("Update", for: .normal)
             
+            if let user = fetchCurrentUserObject() {
+                textFieldUserName.text = user.value(forKey: "username") as? String
+                textFieldEmail.text = user.value(forKey: "email") as? String
+                lblDate.text = user.value(forKey: "dob") as? String
+                if let imageData = user.value(forKey: "profileImage") as? Data {
+                    imgViewPicker.image = UIImage(data: imageData)
+                }
+            }
+            
         }else{
             self.title = "Register"
         }
@@ -44,6 +53,21 @@ class RegisterViewController: UIViewController {
         
         
     }
+    
+    private func fetchCurrentUserObject() -> NSManagedObject? {
+        guard let savedEmail = KeychainHelper.get(key: "LoggedInEmail")?.lowercased(),
+              let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return nil
+        }
+        let context = appDelegate.persistentContainer.viewContext
+        let fetch: NSFetchRequest<NSManagedObject> = NSFetchRequest(entityName: "User")
+        fetch.predicate = NSPredicate(format: "email == %@", savedEmail)
+        if let result = try? context.fetch(fetch), let user = result.first {
+            return user
+        }
+        return nil
+    }
+    
     
     @objc func addImage() {
         let pickerController = UIImagePickerController()
@@ -95,89 +119,19 @@ class RegisterViewController: UIViewController {
     
     @IBAction func buttonSumit(_ sender: Any) {
         
+        let userimage = imgViewPicker.image
         let username = textFieldUserName.text ?? ""
         let confirmpassword = textFieldConfirmPassword.text ?? ""
-        let email = textFieldEmail.text ?? ""
+        let email = textFieldEmail.text?.trimmingCharacters(in: .whitespacesAndNewlines).lowercased() ?? ""
         let password = textFieldPassword.text ?? ""
         
         
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        let context = appDelegate.persistentContainer.viewContext
-        
-        let user = NSEntityDescription.insertNewObject(forEntityName: "User", into: context)
-        
-        user.setValue(username, forKey: "username")
-        user.setValue(email, forKey: "email")
-        user.setValue(password, forKey: "password")
-        user.setValue(lblDate.text ?? "", forKey: "dob")
-        
-        // Convert UIImage to Data
-        if let image = imgViewPicker.image, let imageData = image.jpegData(compressionQuality: 0.8) {
-            user.setValue(imageData, forKey: "profileImage")
-        }
-        
-        do {
-            try context.save()
-            print("✅ User registered successfully with image.")
-        } catch {
-            print("❌ Failed to save user: \(error.localizedDescription)")
-        }
-        
-        if password.isEmpty && confirmpassword.isEmpty && username.isEmpty {
-            UIAlertController.showAlert(title: "Missing Info", message: "Please enter your username password and confirm password.",viewController : self)
-        }
-        
-        else if email.isEmpty  && confirmpassword.isEmpty && username.isEmpty {
-            UIAlertController.showAlert(title: "Missing Info", message: "Please enter your username email and confirmpassword .",viewController : self)
-        }
-        
-        
-        else if email.isEmpty && password.isEmpty  && username.isEmpty {
-            UIAlertController.showAlert(title: "Missing Info", message: "Please enter your username email and password.",viewController : self)
-        }
-        
-        else if email.isEmpty && password.isEmpty && confirmpassword.isEmpty  {
-            UIAlertController.showAlert(title: "Missing Info", message: "Please enter your email password and confirmpassword.",viewController : self)
-        }
-        
-        else if username.isEmpty && email.isEmpty  {
-            UIAlertController.showAlert(title: "Missing Info", message: "Please enter your  username and email. ",viewController : self)
-        }
-        
-        else if username.isEmpty && password.isEmpty  {
-            UIAlertController.showAlert(title: "Missing Info", message: "Please enter your  username and password. ",viewController : self)
-        }
-        
-        else if username.isEmpty && confirmpassword.isEmpty  {
-            UIAlertController.showAlert(title: "Missing Info", message: "Please enter your  username and confirmpassword. ",viewController : self)
-        }
-        
-        else if email.isEmpty && password.isEmpty  {
-            UIAlertController.showAlert(title: "Missing Info", message: "Please enter your  email and password. ",viewController : self)
-        }
-        
-        else if email.isEmpty && confirmpassword.isEmpty  {
-            UIAlertController.showAlert(title: "Missing Info", message: "Please enter your  email and confirmpassword. ",viewController : self)
-        }
-        
-        else if password.isEmpty && confirmpassword.isEmpty  {
-            UIAlertController.showAlert(title: "Missing Info", message: "Please enter your  password and confirmpassword. ",viewController : self)
-        }
-        
-        else if username.isEmpty  {
+        if username.isEmpty  {
             UIAlertController.showAlert(title: "UserName Is Missing", message: "Please enter your username",viewController : self)
-        }
-        
-        else if confirmpassword.isEmpty{
-            UIAlertController.showAlert(title: "Confirm Password Is Missing", message: "Please enter your confirmpassword",viewController : self)
         }
         
         else if email.isEmpty{
             UIAlertController.showAlert(title: "Email Is Missing", message: "Please enter your email",viewController : self)
-        }
-        
-        else if password.isEmpty{
-            UIAlertController.showAlert(title: "Password is Missing", message: "Please enter your password",viewController : self)
         }
         
         else  if !isValidEmail(textFieldEmail.text ?? "") {
@@ -187,6 +141,10 @@ class RegisterViewController: UIViewController {
                 viewController: self
             )
             return
+        }
+        
+        else if password.isEmpty{
+            UIAlertController.showAlert(title: "Password is Missing", message: "Please enter your password",viewController : self)
         }
         
         else if !isValidPassword(textFieldPassword.text ?? "") {
@@ -202,6 +160,10 @@ class RegisterViewController: UIViewController {
             return
         }
         
+        else if confirmpassword.isEmpty{
+            UIAlertController.showAlert(title: "Confirm Password Is Missing", message: "Please enter your confirmpassword",viewController : self)
+        }
+        
         else{
             
             if confirmpassword != password{
@@ -209,30 +171,94 @@ class RegisterViewController: UIViewController {
             }
             
             else {
-                self.title = "Register"
-                self.navigationController?.navigationBar.isHidden = false
-                self.navigationItem.hidesBackButton = false
                 
-                if objProfile == .ProductList{
+                guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+                let context = appDelegate.persistentContainer.viewContext
+                
+                if objProfile == .EditProfile {
                     
-                    let storyboard = UIStoryboard(name: "ProductStoryboard", bundle: nil)
-                    if let productvc = storyboard.instantiateViewController(withIdentifier: "ProductListViewController") as? ProductListViewController {
-                        self.navigationController?.pushViewController(productvc, animated: true)
-                        
+                    
+                    
+                    guard let user = fetchCurrentUserObject() else {
+                        UIAlertController.showAlert(title: "Error", message: "Could not find user to update.", viewController: self)
+                        return
                     }
-                }
-                
-                else {
                     
-                    let storyboard = UIStoryboard(name: "SettingStoryboard", bundle: nil)
-                    if let settingvc = storyboard.instantiateViewController(withIdentifier: "SettingPageViewController") as? SettingPageViewController {
-                        self.navigationController?.pushViewController(settingvc, animated: true)
+                    let originalEmail = (user.value(forKey: "email") as? String ?? "").lowercased()
+                    let newEmail = email.lowercased()
+                    
+                    // Duplicate check only if changed
+                    if newEmail != originalEmail {
+                        let fetchRequest: NSFetchRequest<NSManagedObject> = NSFetchRequest(entityName: "User")
+                        fetchRequest.predicate = NSPredicate(format: "email == %@", newEmail)
+                        if let existing = try? context.fetch(fetchRequest), existing.count > 0 {
+                            UIAlertController.showAlert(title: "Email Taken", message: "An account with this email already exists.", viewController: self)
+                            return
+                        }
+                    }
+                    
+                    // Update values
+                    user.setValue(username, forKey: "username")
+                    user.setValue(newEmail, forKey: "email")
+                    user.setValue(password, forKey: "password")
+                    user.setValue(lblDate.text ?? "", forKey: "dob")
+                    if let image = imgViewPicker.image, let imageData = image.jpegData(compressionQuality: 0.8) {
+                        user.setValue(imageData, forKey: "profileImage")
+                    }
+                    
+                    do {
+                        try context.save()
+                        if newEmail != originalEmail {
+                            KeychainHelper.save(key: "LoggedInEmail", value: newEmail)
+                        }
                         
+                        let storyboard = UIStoryboard(name: "SettingStoryboard", bundle: nil)
+                        
+                        if ((storyboard.instantiateViewController(withIdentifier: "SettingPageViewController") as? SettingPageViewController) != nil) {
+                            self.navigationController?.popViewController(animated: true)
+                            
+                            UIAlertController.showAlert(title: "Success", message: "Profile updated.", viewController: self)
+                        }
+                    } catch {
+                        UIAlertController.showAlert(title: "Save Error", message: "Failed to update profile. Try again.", viewController: self)
+                    }
+                    
+                } else {
+                    // Registration flow with duplicate email check
+                    let fetchRequest: NSFetchRequest<NSManagedObject> = NSFetchRequest(entityName: "User")
+                    fetchRequest.predicate = NSPredicate(format: "email == %@", email)
+                    if let existing = try? context.fetch(fetchRequest), existing.count > 0 {
+                        UIAlertController.showAlert(title: "Email Taken", message: "An account with this email already exists.", viewController: self)
+                        return
+                    }
+                    
+                    guard let userEntity = NSEntityDescription.entity(forEntityName: "User", in: context) else { return }
+                    let user = NSManagedObject(entity: userEntity, insertInto: context)
+                    user.setValue(username, forKey: "username")
+                    user.setValue(email, forKey: "email")
+                    user.setValue(password, forKey: "password")
+                    user.setValue(lblDate.text ?? "", forKey: "dob")
+                    if let image = imgViewPicker.image, let imageData = image.jpegData(compressionQuality: 0.8) {
+                        user.setValue(imageData, forKey: "profileImage")
+                    }
+                    
+                    do {
+                        try context.save()
+                        // Store email in Keychain after registration
+                        KeychainHelper.save(key: "LoggedInEmail", value: email)
+                        
+                        let storyboard = UIStoryboard(name: "ProductStoryboard", bundle: nil)
+                        if let productvc = storyboard.instantiateViewController(withIdentifier: "ProductListViewController") as? ProductListViewController {
+                            self.navigationController?.pushViewController(productvc, animated: true)
+                        }
+                        
+                        print("✅ User registered successfully with image.")
+                    } catch let error as NSError {
+                        print("❌ Failed to save user: \(error.localizedDescription)")
                     }
                 }
             }
         }
     }
-    
 }
 
