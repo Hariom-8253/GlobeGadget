@@ -21,11 +21,8 @@ class ProductListViewController: UIViewController {
     var arrProduct : [ProductModel] = []
     var arrFilteredData : [ProductModel] = []
     var arrCategory : [CategoryModel] = []
-    
     var objRedirect: PageType = .ProductList
     var indexSelectedCategory : Int = 0
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,8 +30,6 @@ class ProductListViewController: UIViewController {
         let textSearch = [txtSearch!]
         styleViews(textSearch, cornerRadius: 8, borderWidth: 1, borderColor: UIColor.colorPrimary.cgColor)
         txtSearch.setPadding(left: 10, right: 10)
-        
-
         
         let btnSetting = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
         btnSetting.setBackgroundImage(UIImage(systemName: "gear"), for: .normal)
@@ -59,7 +54,6 @@ class ProductListViewController: UIViewController {
         btnSetting.tintColor = .colorPrimary
         btnSetting1.tintColor = .colorPrimary
         
-        
         if objRedirect == .Wishlist {
             
             self.title = "WishList"
@@ -72,7 +66,6 @@ class ProductListViewController: UIViewController {
             
             let productapi = "https://mocki.io/v1/b1aa05fa-246d-44d9-bc51-76c1e3500457"
             let categoryapi = "https://mocki.io/v1/9533ba8d-336c-489b-86b6-fe9e76917dcc"
-            
             
             APICalls.getData(from: productapi) {(products: [ProductModel]) in
                 DispatchQueue.main.async {
@@ -90,7 +83,6 @@ class ProductListViewController: UIViewController {
                     self.colViewProductList.reloadData()
                 }
             }
-        
             
             if let dict = ProductModel.convertToArrayOfDictionaries(arrProduct) {
                 UserDefaults.standard.set(dict, forKey: "ProductList")
@@ -115,8 +107,6 @@ class ProductListViewController: UIViewController {
         
         colViewProductList.register(UINib(nibName: "ProductListCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ProductListCollectionViewCell")
         
-        
-        
     }
     
     func updateWishListData() {
@@ -127,19 +117,20 @@ class ProductListViewController: UIViewController {
                 item.addFavouriteProduct = false
             }
         }
-        
-        
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         if objRedirect == .Wishlist {
+            // use actual wishlist as base
+            arrFilteredData = app.wishlistArray
             
-            if arrFilteredData.count == 0 {
+            if arrFilteredData.isEmpty {
                 tblViewProduct.isHidden = true
+                lblEmpty.text = "WishList is empty"
                 lblEmpty.isHidden = false
+                txtSearch.isHidden = false
             } else {
                 tblViewProduct.isHidden = false
                 lblEmpty.isHidden = true
@@ -148,13 +139,11 @@ class ProductListViewController: UIViewController {
         } else {
             updateWishListData()
             lblEmpty.isHidden = true
-            
         }
         
         tblViewProduct.reloadData()
         updateQuantity()
     }
-    
     
     @objc func btnSettingAction() {
         let storyboard = UIStoryboard(name: "SettingStoryboard", bundle: nil)

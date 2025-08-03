@@ -32,7 +32,7 @@ extension AddressFormViewController: UITextFieldDelegate {
             }
         }
     }
-
+    
     func textFieldShouldReturn (_ textField: UITextField) -> Bool{
         if textField == txtFirstName && textField.returnKeyType == .next{
             txtFirstName.resignFirstResponder()
@@ -82,20 +82,20 @@ extension AddressFormViewController: UIPickerViewDelegate, UIPickerViewDataSourc
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
-
+    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return isSelectingState ? stateList.count : cityList.count
     }
-
+    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return isSelectingState ? stateList[row] : cityList[row]
     }
-
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if isSelectingState {
             selectedState = stateList[row]
             txtState.text = selectedState
-
+            
             // Load cities for the selected state
             cityList = Address.cities(forState: selectedState!)
             txtCity.text = "" // reset city if state changes

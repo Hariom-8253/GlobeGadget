@@ -12,7 +12,7 @@ class AddressFormViewController: UIViewController {
     var selectedState: String?
     var selectedCity: String?
     var isSelectingState = true
-
+    
     let stateList = Address.stateList
     var cityList: [String] = []
     let pickerView = UIPickerView()
@@ -35,17 +35,14 @@ class AddressFormViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         pickerView.delegate = self
         pickerView.dataSource = self
-
-//        txtState.delegate = self
-//        txtCity.delegate = self
         
         txtState.inputView = pickerView
         txtCity.inputView = pickerView
-
-
+        
+        
         let allTextFields = [txtDob!,txtAdd1!,txtAdd2!, txtCity!, txtState!, txtEmail!, txtPincode!, txtLastName!, txtMobileNo!, txtFirstName!]
         let allbuttons = [btnSubmitAddForm!]
         let allViews = allbuttons + allTextFields
@@ -54,11 +51,11 @@ class AddressFormViewController: UIViewController {
         setPaddingForTextFields(allTextFields, left: 10, right: 10)
         
         self.title = "Add Address"
-
+        
         if let obj = objAddress {
             self.title = "Edit Address"
             btnSubmitAddForm.setTitle("Update", for: .normal)
-
+            
             txtFirstName.text = obj.strFirstName
             txtLastName.text = obj.strLastName
             txtEmail.text = obj.strEmail
@@ -69,48 +66,12 @@ class AddressFormViewController: UIViewController {
             txtAdd1.text = obj.strAddress1
             txtAdd2.text = obj.strAddress2
             txtMobileNo.text = "\(obj.intMobileNo ?? 0)"
-
+            
             if let state = obj.strState {
                 cityList = Address.cities(forState: state)
             }
         }
     }
-
-    
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        
-//        txtState.inputView = pickerView
-//        txtCity.inputView = pickerView
-//                
-//        let allTextFields = [txtDob!,txtAdd1!,txtAdd2!, txtCity!, txtState!, txtEmail!, txtPincode!, txtLastName!, txtMobileNo!, txtFirstName!]
-//        let allbuttons = [btnSubmitAddForm!]
-//        
-//        let allViews = allbuttons + allTextFields
-//        
-//        styleViews(allViews, cornerRadius: 8, borderWidth: 1, borderColor: UIColor.colorPrimary.cgColor)
-//        setPaddingForTextFields(allTextFields, left: 10, right: 10)
-//        
-//        self.title = "Add Address"
-//        
-//        if let obj = objAddress {
-//            self.title = "Edit Address"
-//            btnSubmitAddForm.setTitle("Update", for: .normal)
-//            
-//            txtFirstName.text = obj.strFirstName
-//            txtLastName.text = obj.strLastName
-//            txtEmail.text = obj.strEmail
-//            txtState.text = obj.strState
-//            txtCity.text = obj.strCity
-//            txtPincode.text = "\(obj.intPincode ?? 0)"
-//            txtDob.text = "\(obj.intAge ?? 0)"
-//            txtAdd1.text = obj.strAddress1
-//            txtAdd2.text = obj.strAddress2
-//            txtMobileNo.text = "\(obj.intMobileNo ?? 0)"
-//            
-//        }
-//        
-//    }
     
     @IBAction func btnSubmitAction(_ sender: Any) {
         
@@ -125,57 +86,43 @@ class AddressFormViewController: UIViewController {
         let address2 = txtAdd2.text ?? ""
         let pincode = txtPincode.text ?? ""
         
-        if firstName.isEmpty{
-            UIAlertController.showAlert(title: "Error", message: "Please enter your first name.",viewController: self)
+        switch true {
+        case firstName.isEmpty:
+            UIAlertController.showAlert(title: "Error", message: "Please enter your first name.", viewController: self)
             return
-        }
-        
-        else if lastName.isEmpty {
-            UIAlertController.showAlert(title: "Error", message: "Please enter your last name.",viewController: self)
+        case lastName.isEmpty:
+            UIAlertController.showAlert(title: "Error", message: "Please enter your last name.", viewController: self)
             return
-        }
-        
-        else if email.isEmpty {
-            UIAlertController.showAlert(title: "Error", message: "Please enter your email.",viewController: self)
+        case email.isEmpty:
+            UIAlertController.showAlert(title: "Error", message: "Please enter your email.", viewController: self)
             return
-        }
-        
-        else if mobile.isEmpty {
-            UIAlertController.showAlert(title: "Error", message: "Please enter your mobile number.",viewController: self)
+        case mobile.isEmpty:
+            UIAlertController.showAlert(title: "Error", message: "Please enter your mobile number.", viewController: self)
             return
-        }
-        
-        else if dob.isEmpty {
-            UIAlertController.showAlert(title: "Error", message: "Please enter your age.",viewController: self)
+        case dob.isEmpty:
+            UIAlertController.showAlert(title: "Error", message: "Please enter your age.", viewController: self)
             return
-        }
-        
-        else if state.isEmpty {
-            UIAlertController.showAlert(title: "Error", message: "Please enter your state.",viewController: self)
+        case state.isEmpty:
+            UIAlertController.showAlert(title: "Error", message: "Please enter your state.", viewController: self)
             return
-        }
-        
-        else if city.isEmpty {
-            UIAlertController.showAlert(title: "Error", message: "Please enter your city.",viewController: self)
+        case city.isEmpty:
+            UIAlertController.showAlert(title: "Error", message: "Please enter your city.", viewController: self)
             return
-        }
-        
-        else if address1.isEmpty {
-            UIAlertController.showAlert(title: "Error", message: "Please enter address line 1.",viewController: self)
+        case address1.isEmpty:
+            UIAlertController.showAlert(title: "Error", message: "Please enter address line 1.", viewController: self)
             return
-        }
-        
-        else if address2.isEmpty {
-            UIAlertController.showAlert(title: "Error", message: "Please enter address line 1.",viewController: self)
+        case address2.isEmpty:
+            UIAlertController.showAlert(title: "Error", message: "Please enter address line 1.", viewController: self)
             return
-        }
-        
-        else if pincode.isEmpty {
-            UIAlertController.showAlert(title: "Error", message: "Please enter your pincode.",viewController: self)
+        case pincode.isEmpty:
+            UIAlertController.showAlert(title: "Error", message: "Please enter your pincode.", viewController: self)
             return
+        default:
+            break
         }
         
         if let obj = objAddress {
+            
             obj.strFirstName = txtFirstName.text ?? ""
             obj.strLastName = txtLastName.text ?? ""
             obj.strEmail = txtEmail.text ?? ""
@@ -186,11 +133,25 @@ class AddressFormViewController: UIViewController {
             obj.strAddress1 = txtAdd1.text ?? ""
             obj.strAddress2 = txtAdd2.text ?? ""
             obj.intPincode = Int(txtPincode.text ?? "0") ?? 0
+            
         }
         
         else {
-            let objAddress = Address(strFirstName: txtFirstName.text ?? "", strLastName: txtLastName.text ?? "", strEmail: txtEmail.text ?? "", intAge: Int(txtDob.text ?? "") ?? 0, strState: txtState.text ?? "", strCity: txtCity.text ?? "", strAddress1:  txtAdd1.text ?? "", strAddress2:  txtAdd2.text ?? "", intPincode: Int(txtPincode.text ?? "") ?? 0, intMobileNo: Int(txtMobileNo.text ?? "") ?? 0)
+            
+            let objAddress = Address(
+                strFirstName: txtFirstName.text ?? "",
+                strLastName: txtLastName.text ?? "",
+                strEmail: txtEmail.text ?? "",
+                intAge: Int(txtDob.text ?? "") ?? 0,
+                strState: txtState.text ?? "",
+                strCity: txtCity.text ?? "",
+                strAddress1: txtAdd1.text ?? "",
+                strAddress2: txtAdd2.text ?? "",
+                intPincode: Int(txtPincode.text ?? "") ?? 0,
+                intMobileNo: Int(txtMobileNo.text ?? "") ?? 0
+            )
             arrAddressList.append(objAddress)
+            
         }
         
         self.navigationController?.popViewController(animated: true)

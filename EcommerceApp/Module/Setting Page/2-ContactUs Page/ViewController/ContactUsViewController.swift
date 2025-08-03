@@ -21,7 +21,7 @@ class ContactUsViewController: UIViewController {
         
         txtMessage.text = placeHolder
         txtMessage.textColor = .lightGray
-    
+        
         txtName.setPadding(left: 10, right: 10)
         txtEmail.setPadding(left: 10, right: 10)
         txtMessage.textContainerInset = UIEdgeInsets(top: 10, left: 6, bottom: 10, right: 6)

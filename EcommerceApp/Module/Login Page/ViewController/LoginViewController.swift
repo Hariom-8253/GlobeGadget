@@ -27,21 +27,14 @@ class LoginViewController: UIViewController {
         let alltextfields = [txtEmail, txtPassword]
         setPaddingForTextFields(alltextfields, left: 10, right: 10)
         
-
-        
     }
-    
     
     @IBAction func btnLogInClick(_ sender: Any) {
         
         let email = txtEmail.text ?? ""
         let password = txtPassword.text ?? ""
         
-        if email.isEmpty && password.isEmpty {
-            UIAlertController.showAlert(title: "Missing Info", message: "Please enter your email and password.", viewController: self)
-        }
-        
-        else if email.isEmpty{
+        if email.isEmpty{
             UIAlertController.showAlert(title: "Email Is Missing", message: "Please enter your email", viewController: self)
         }
         
@@ -88,28 +81,28 @@ class LoginViewController: UIViewController {
                 if let storedPassword = user.value(forKey: "password") as? String, storedPassword == password{
                     
                     let username = user.value(forKey: "username") as? String ?? "(no name)"
-                        let email = user.value(forKey: "email") as? String ?? "(no email)"
-                        let dob = user.value(forKey: "dob") as? String ?? "(no dob)"
-                        var profileImage: UIImage? = nil
-                        if let imageData = user.value(forKey: "profileImage") as? Data {
-                            profileImage = UIImage(data: imageData)
-                        }
-
-                        // 2. Print to console (for debugging)
-                        print("✅ Logged in user details:")
-                        print("Username: \(username)")
-                        print("Email: \(email)")
-                        print("DOB: \(dob)")
-                        if profileImage != nil {
-                            print("Profile image is available.")
-                        } else {
-                            print("No profile image.")
-                        }
+                    let email = user.value(forKey: "email") as? String ?? "(no email)"
+                    let dob = user.value(forKey: "dob") as? String ?? "(no dob)"
+                    var profileImage: UIImage? = nil
+                    if let imageData = user.value(forKey: "profileImage") as? Data {
+                        profileImage = UIImage(data: imageData)
+                    }
+                    
+                    // 2. Print to console (for debugging)
+                    print("✅ Logged in user details:")
+                    print("Username: \(username)")
+                    print("Email: \(email)")
+                    print("DOB: \(dob)")
+                    if profileImage != nil {
+                        print("Profile image is available.")
+                    } else {
+                        print("No profile image.")
+                    }
                     
                     KeychainHelper.save(key: "LoginStatus", value: "true")
                     KeychainHelper.save(key: "LoggedInEmail", value: email.lowercased())
                     self.navigationController?.navigationBar.isHidden = true
-
+                    
                     let storyboard = UIStoryboard(name: "ProductStoryboard", bundle: nil)
                     if let plvc = storyboard.instantiateViewController(withIdentifier: "ProductListViewController") as? ProductListViewController {
                         self.navigationController?.pushViewController(plvc, animated: true)
@@ -150,6 +143,7 @@ class LoginViewController: UIViewController {
                 }
                 
             }
+            
         }
         
         // 4. Cancel action with red color

@@ -21,8 +21,6 @@ extension ProductListViewController : UICollectionViewDelegate, UICollectionView
         
         cell.lblTitle.text = currentCategory.category_display_name
         
-        
-        
         if indexSelectedCategory == indexPath.item {
             cell.viewMain.backgroundColor = UIColor.colorPrimary
             cell.lblTitle.textColor = .white

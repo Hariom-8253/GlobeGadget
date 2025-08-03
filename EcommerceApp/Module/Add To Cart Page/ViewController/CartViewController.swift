@@ -58,16 +58,16 @@ class CartViewController: UIViewController {
         
         styleViews(allViews, cornerRadius: 8, borderWidth: 1, borderColor: UIColor.colorPrimary.cgColor)
         
-//        stackCalculation.layer.cornerRadius = 10
-//        stackCalculation.layer.borderWidth = 2
+        //        stackCalculation.layer.cornerRadius = 10
+        //        stackCalculation.layer.borderWidth = 2
         stackCalculation.isLayoutMarginsRelativeArrangement = true
         stackCalculation.layoutMargins = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
         viewStyle(textField: stackCalculation)
         
-//        btnApplyCoupon.layer.cornerRadius = 8
-//        txtCouponCode.layer.cornerRadius = 8
-//        btnPlaceOrder.layer.cornerRadius = 8
-//        stackCalculation.layer.borderColor = UIColor.colorPrimary.cgColor
+        //        btnApplyCoupon.layer.cornerRadius = 8
+        //        txtCouponCode.layer.cornerRadius = 8
+        //        btnPlaceOrder.layer.cornerRadius = 8
+        //        stackCalculation.layer.borderColor = UIColor.colorPrimary.cgColor
         
         self.title = "Cart"
         tblCart.register(UINib(nibName: "ProductTableViewCell", bundle: nil), forCellReuseIdentifier: "ProductTableViewCell")

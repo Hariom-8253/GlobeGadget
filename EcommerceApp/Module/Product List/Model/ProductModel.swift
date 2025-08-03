@@ -19,9 +19,7 @@ class ProductModel : Codable{
     var addFavouriteProduct : Bool?
     var arrImage : [String] = []
     var intProductQty : Int?
-    
     var categoryId : Int = 0
-    
     
     init(strTitle: String, doublePrice: Double, strCategory: String, strDescription: String, strImageName: String, strDescription2: String, arrImage : [String]) {
         self.strTitle = strTitle

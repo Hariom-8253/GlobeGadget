@@ -43,142 +43,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2744" y="46"/>
-        </scene>
-        <!--About Us View Controller-->
-        <scene sceneID="h8E-Zn-ap6">
-            <objects>
-                <viewController storyboardIdentifier="AboutUsViewController" id="kRw-xv-9Up" customClass="AboutUsViewController" customModule="EcommerceApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="7aR-6J-tt1">
-                        <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fPb-fK-vtz">
-                                <rect key="frame" x="76" y="306" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q9m-0V-TxB">
-                                <rect key="frame" x="16" y="140" width="408" height="764"/>
-                                <color key="backgroundColor" name="AppColor2"/>
-                                <string key="text">Welcome to GlobeGadget – Your Global Apple Destination!
-
-At GlobeGadget, we believe in bringing the finest Apple technology right to your fingertips. Whether you’re searching for the latest iPhone, exploring top-tier Apple accessories, or upgrading your digital lifestyle — we’ve got you covered.
-
-Founded with a passion for innovation and quality, GlobeGadget is your trusted source for genuine Apple products. We’re not just an online store — we’re a community of Apple enthusiasts dedicated to providing:
-
-Authentic, high-quality products
-
-Fast and secure delivery
-
-Responsive customer support
-
-Easy return and exchange policy
-
-Our vision is to make premium Apple devices accessible to everyone, everywhere — with a seamless shopping experience that matches the elegance of the products we sell.
-
-Join the GlobeGadget family and experience the future — one Apple product at a time.</string>
-                                <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <connections>
-                                    <outlet property="delegate" destination="kRw-xv-9Up" id="jtn-7c-4nC"/>
-                                </connections>
-                            </textView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="hr7-X6-UCD"/>
-                        <color key="backgroundColor" name="AppColor2"/>
-                        <constraints>
-                            <constraint firstItem="Q9m-0V-TxB" firstAttribute="leading" secondItem="hr7-X6-UCD" secondAttribute="leading" constant="16" id="247-hM-g6d"/>
-                            <constraint firstItem="Q9m-0V-TxB" firstAttribute="top" secondItem="hr7-X6-UCD" secondAttribute="top" constant="16" id="7dZ-96-uYW"/>
-                            <constraint firstItem="Q9m-0V-TxB" firstAttribute="bottom" secondItem="hr7-X6-UCD" secondAttribute="bottom" constant="16" id="fzA-Nh-inW"/>
-                            <constraint firstAttribute="trailing" secondItem="Q9m-0V-TxB" secondAttribute="trailing" constant="16" id="sz8-yk-aMy"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qxH-6z-vay" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1552" y="46"/>
-        </scene>
-        <!--Privacy Policy View Controller-->
-        <scene sceneID="jp5-Rq-3kk">
-            <objects>
-                <viewController storyboardIdentifier="PrivacyPolicyViewController" id="VZ0-cB-XSy" customClass="PrivacyPolicyViewController" customModule="EcommerceApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="tGQ-Y2-FzZ">
-                        <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9T3-9Y-jk4">
-                                <rect key="frame" x="0.0" y="124" width="440" height="764"/>
-                                <color key="backgroundColor" name="AppColor2"/>
-                                <string key="text">At GlobeGadget, we respect your privacy and are committed to protecting your personal information. When you use our app, we may collect basic details such as your name, email, phone number, and delivery address to help process your orders and provide customer support.
-
-We do not sell or share your personal information with third-party advertisers. All payment information is handled securely through trusted payment gateways. Your data is stored safely and only used to improve your shopping experience.
-
-By using GlobeGadget, you agree to the collection and use of your information as described in this policy. If you have any questions or concerns, feel free to contact us at support@globegadget.com.</string>
-                                <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <connections>
-                                    <outlet property="delegate" destination="VZ0-cB-XSy" id="RXz-Pd-9fd"/>
-                                </connections>
-                            </textView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="CxO-Z0-zNF"/>
-                        <color key="backgroundColor" name="AppColor2"/>
-                        <constraints>
-                            <constraint firstItem="9T3-9Y-jk4" firstAttribute="leading" secondItem="CxO-Z0-zNF" secondAttribute="leading" id="KUH-1W-Gkk"/>
-                            <constraint firstItem="9T3-9Y-jk4" firstAttribute="top" secondItem="CxO-Z0-zNF" secondAttribute="top" id="j5L-ep-jJz"/>
-                            <constraint firstItem="CxO-Z0-zNF" firstAttribute="bottom" secondItem="9T3-9Y-jk4" secondAttribute="bottom" id="jfY-A2-TwA"/>
-                            <constraint firstItem="CxO-Z0-zNF" firstAttribute="trailing" secondItem="9T3-9Y-jk4" secondAttribute="trailing" id="qxt-5C-dnB"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3V0-tS-Nc8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-143" y="46"/>
-        </scene>
-        <!--Termsand Condition View Controller-->
-        <scene sceneID="fCJ-1g-zwP">
-            <objects>
-                <viewController storyboardIdentifier="TermsandConditionViewController" id="7QP-Gl-hzY" customClass="TermsandConditionViewController" customModule="EcommerceApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="nX7-Z5-fBk">
-                        <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gVW-oy-Qqb">
-                                <rect key="frame" x="0.0" y="124" width="440" height="764"/>
-                                <color key="backgroundColor" name="AppColor2"/>
-                                <string key="text">By using the GlobeGadget app, you agree to follow the terms mentioned below.
-
-All the products listed in the app are subject to availability. Prices may change without prior notice. We make sure all product details are accurate, but we are not responsible for any errors in descriptions or pricing.
-
-When placing an order, please ensure that your information is correct. Once an order is confirmed, it cannot be cancelled or changed. In case of any issues, you can contact our support team.
-
-All payments made through the app are secure. We are not responsible for any issues caused by third-party payment services.
-
-Using our app means you accept these terms. If you do not agree with any part of them, please do not use the app.</string>
-                                <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="Pxp-w7-w9p"/>
-                        <color key="backgroundColor" name="AppColor2"/>
-                        <constraints>
-                            <constraint firstItem="Pxp-w7-w9p" firstAttribute="bottom" secondItem="gVW-oy-Qqb" secondAttribute="bottom" id="3er-Z4-kbd"/>
-                            <constraint firstItem="Pxp-w7-w9p" firstAttribute="trailing" secondItem="gVW-oy-Qqb" secondAttribute="trailing" id="LoA-bc-RYh"/>
-                            <constraint firstItem="gVW-oy-Qqb" firstAttribute="leading" secondItem="Pxp-w7-w9p" secondAttribute="leading" id="c2Q-fJ-7Xz"/>
-                            <constraint firstItem="gVW-oy-Qqb" firstAttribute="top" secondItem="Pxp-w7-w9p" secondAttribute="top" id="zg7-B5-l1F"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0CT-GQ-0Th" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="989" y="46"/>
+            <point key="canvasLocation" x="-2748" y="-92"/>
         </scene>
         <!--Contact Us View Controller-->
         <scene sceneID="SUs-Ma-beE">
@@ -264,46 +129,7 @@ Using our app means you accept these terms. If you do not agree with any part of
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uOh-jK-D5g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2351.9083969465646" y="45.774647887323944"/>
-        </scene>
-        <!--Wish List View Controller-->
-        <scene sceneID="4Tl-67-B1w">
-            <objects>
-                <viewController storyboardIdentifier="WishListViewController" id="znC-ZE-cou" customClass="WishListViewController" customModule="EcommerceApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="cWH-bL-bqN">
-                        <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="P5g-Ta-hg7"/>
-                        <color key="backgroundColor" name="AppColor2"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Hqu-se-7Ew" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3662" y="46"/>
-        </scene>
-        <!--Edit Profile View Controller-->
-        <scene sceneID="Bog-l2-LuG">
-            <objects>
-                <viewController storyboardIdentifier="EditProfileViewController" id="1cH-uJ-vVl" customClass="EditProfileViewController" customModule="EcommerceApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="9D1-rv-fBs">
-                        <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Edit Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iaB-y7-E7Z">
-                                <rect key="frame" x="197" y="401" width="82" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="X0Q-q6-Dan"/>
-                        <color key="backgroundColor" name="AppColor2"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="OvY-nJ-bZg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4669" y="46"/>
+            <point key="canvasLocation" x="-500" y="-92"/>
         </scene>
         <!--Web View View Controller-->
         <scene sceneID="8SL-f5-c1N">
@@ -343,7 +169,7 @@ Using our app means you accept these terms. If you do not agree with any part of
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x7s-gN-EBm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3082" y="-623"/>
+            <point key="canvasLocation" x="-1649" y="-92"/>
         </scene>
     </scenes>
     <resources>

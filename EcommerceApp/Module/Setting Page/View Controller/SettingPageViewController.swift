@@ -16,15 +16,32 @@ class SettingPageViewController: UIViewController {
     
     @IBOutlet weak var tblSetting: UITableView!
     
+    override func viewWillAppear(_ animated: Bool) {
+        setupNavBarUserItem()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+            
+        arrClassSettingSection.append(ClassSettingSection(SectionTitle: "User", arrClassSettingOption: arrSettingOption.filter{$0.strSettingType == .user}))
+        arrClassSettingSection.append(ClassSettingSection(SectionTitle: "Contact Us", arrClassSettingOption: arrSettingOption.filter{$0.strSettingType == .contactus}))
+        arrClassSettingSection.append(ClassSettingSection(SectionTitle: "Logout", arrClassSettingOption: arrSettingOption.filter{$0.strSettingType == .logout}))
         
-        // Show profile image on nav bar
-        if let user = fetchLoggedInUser(),
+        self.title = "Settings"
+                
+        tblSetting.register(UINib(nibName: "SettingPageTableViewCell", bundle: nil), forCellReuseIdentifier: "SettingPageTableViewCell")
+        
+        UITableView.appearance().sectionHeaderTopPadding = 0
+    }
+    
+    private func setupNavBarUserItem() {
+        // Check login status
+        let isLoggedIn = (KeychainHelper.get(key: "LoginStatus") == "true")
+        if isLoggedIn, let user = fetchLoggedInUser(),
            let imageData = user.value(forKey: "profileImage") as? Data,
            let profileImage = UIImage(data: imageData) {
 
-            // Use a button so tap is easy and sizing is explicit
+            // show profile image (same as before)
             let size: CGFloat = 34
             let button = UIButton(type: .custom)
             button.frame = CGRect(x: 0, y: 0, width: size, height: size)
@@ -33,30 +50,24 @@ class SettingPageViewController: UIViewController {
             button.layer.borderWidth = 1
             button.layer.borderColor = UIColor.lightGray.cgColor
             button.imageView?.contentMode = .scaleAspectFill
-            // ensure original colors
             button.setImage(profileImage.withRenderingMode(.alwaysOriginal), for: .normal)
             button.addTarget(self, action: #selector(profileImageTapped), for: .touchUpInside)
-
-            // Force intrinsic size so nav bar doesn't stretch it
             button.widthAnchor.constraint(equalToConstant: size).isActive = true
             button.heightAnchor.constraint(equalToConstant: size).isActive = true
 
-            let barItem = UIBarButtonItem(customView: button)
-            self.navigationItem.rightBarButtonItem = barItem
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
+        } else {
+            // show login button
+            let loginButton = UIBarButtonItem(title: "Login", style: .plain, target: self, action: #selector(loginTapped))
+            self.navigationItem.rightBarButtonItem = loginButton
         }
-
-        
-        arrClassSettingSection.append(ClassSettingSection(SectionTitle: "User", arrClassSettingOption: arrSettingOption.filter{$0.strSettingType == .user}))
-        arrClassSettingSection.append(ClassSettingSection(SectionTitle: "Contact Us", arrClassSettingOption: arrSettingOption.filter{$0.strSettingType == .contactus}))
-        arrClassSettingSection.append(ClassSettingSection(SectionTitle: "Logout", arrClassSettingOption: arrSettingOption.filter{$0.strSettingType == .logout}))
-        
-        self.title = "Settings"
-        
-        // Do any additional setup after loading the view.
-        
-        tblSetting.register(UINib(nibName: "SettingPageTableViewCell", bundle: nil), forCellReuseIdentifier: "SettingPageTableViewCell")
-        
-        UITableView.appearance().sectionHeaderTopPadding = 0
+    }
+    
+    @objc private func loginTapped() {
+        let storyboard = UIStoryboard(name: "UserStoryboard", bundle: nil)
+        if let vc = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController {
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     private func fetchLoggedInUser() -> NSManagedObject? {

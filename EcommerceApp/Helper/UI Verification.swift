@@ -17,9 +17,10 @@ func isValidPassword(_ password: String) -> Bool {
 }
 
 func isValidEmail(_ email: String) -> Bool {
-    
-    let emailRegEx = #"^[A-Z0-9a-z]+@gmail.com$"#
-    let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
-    return emailPredicate.evaluate(with: email)
+    let trimmed = email.trimmingCharacters(in: .whitespacesAndNewlines)
+    let emailRegEx = #"^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,64}$"#
+    let predicate = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
+    return predicate.evaluate(with: trimmed)
 }
+
 

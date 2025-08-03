@@ -18,24 +18,13 @@ class ProductTableViewCell: UITableViewCell {
     @IBOutlet weak var lblDescription: UILabel!
     @IBOutlet weak var stepper: UIStepper!
     @IBOutlet weak var btnAddtoCart: UIButton!
-    
     @IBOutlet weak var btnLike: UIButton!
     
-    
     var btnDeleteWishlistClick : (() -> Void) = {}
-    
-    
     var onAddToCart : (() -> Void)?
-    
     var ShowAlert : (()->Void)?
-    
     var onUpdate : (()->Void)?
-    
     var btnDeleteCartClick : (() -> Void) = {}
-    
-    
-    
-    
     var objProduct: ProductModel?
     
     override func awakeFromNib() {
@@ -61,14 +50,12 @@ class ProductTableViewCell: UITableViewCell {
         
         btnDeleteWishlistClick()
         
-        
     }
     
     func setImage() {
         let imageName =  objProduct?.addFavouriteProduct ?? false ? "heart.fill" : "heart"
         btnLike.setImage(UIImage(systemName: imageName), for: .normal)
     }
-    
     
     func configureCell (product : ProductModel){
         self.lblTitle.text = product.strTitle
@@ -100,7 +87,6 @@ class ProductTableViewCell: UITableViewCell {
         self.stepper.value = Double(product.intProductQty ?? 1)
         btnAddtoCart.isHidden = true
         
-        
         self.objProduct = product
         
     }
@@ -118,17 +104,12 @@ class ProductTableViewCell: UITableViewCell {
     }
     @IBAction func btnAddToCartClick(_ sender: Any) {
         
-        
-        
         if let obj = objProduct {
             checkProduct(objProductToAdd: obj)
         }
         ShowAlert?()
         onUpdate?()
     }
-    
-    
-    
 }
 
 func checkProduct(objProductToAdd : ProductModel){

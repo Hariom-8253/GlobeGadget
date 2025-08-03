@@ -25,21 +25,46 @@ class CartManager {
 
 extension ProductListViewController : UITableViewDelegate, UITextFieldDelegate{
     
-    func textFieldDidChangeSelection (_ textField : UITextField){
+    func textFieldDidChangeSelection(_ textField: UITextField) {
         let searchText = textField.text ?? ""
-        
         let selectedCategoryId = indexSelectedCategory
         
-        arrFilteredData = arrProduct.filter { product in
-            let matchesCategory = (selectedCategoryId == 0) || (product.categoryId == selectedCategoryId)
-            let matchesSearch = searchText.isEmpty || product.strTitle.lowercased().contains(searchText.lowercased())
-            return matchesCategory && matchesSearch
+        if objRedirect == .Wishlist {
+            // Base is wishlist
+            let wishlistItems = app.wishlistArray
+            
+            if wishlistItems.isEmpty {
+                arrFilteredData = []
+                lblEmpty.text = "WishList is empty"
+                lblEmpty.isHidden = false
+                tblViewProduct.isHidden = true
+                return
+            }
+            
+            arrFilteredData = wishlistItems.filter { product in
+                let matchesCategory = (selectedCategoryId == 0) || (product.categoryId == selectedCategoryId)
+                let matchesSearch = searchText.isEmpty || product.strTitle.lowercased().contains(searchText.lowercased())
+                return matchesCategory && matchesSearch
+            }
+            
+            lblEmpty.text = arrFilteredData.isEmpty ? "No Product found" : ""
+            lblEmpty.isHidden = !arrFilteredData.isEmpty
+            tblViewProduct.isHidden = arrFilteredData.isEmpty
+        } else {
+            // Normal mode
+            arrFilteredData = arrProduct.filter { product in
+                let matchesCategory = (selectedCategoryId == 0) || (product.categoryId == selectedCategoryId)
+                let matchesSearch = searchText.isEmpty || product.strTitle.lowercased().contains(searchText.lowercased())
+                return matchesCategory && matchesSearch
+            }
+            lblEmpty.text = "No Product found"
+            lblEmpty.isHidden = !arrFilteredData.isEmpty
+            tblViewProduct.isHidden = arrFilteredData.isEmpty
         }
         
-        lblEmpty.text = "No Product found"
-        lblEmpty.isHidden = !arrFilteredData.isEmpty
         tblViewProduct.reloadData()
     }
+    
 }
 
 extension ProductListViewController : UITableViewDataSource{
@@ -81,7 +106,6 @@ extension ProductListViewController : UITableViewDataSource{
         }
         return cell
     }
-    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "ProductStoryboard", bundle: nil)
